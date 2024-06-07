@@ -7,7 +7,6 @@ import {LibString} from "solmate/utils/LibString.sol";
 import {Base64} from "solady/utils/Base64.sol";
 
 import {LiquidSplitCloneImpl} from "src/CloneImpl/LiquidSplitCloneImpl.sol";
-import {Renderer} from "src/libs/Renderer.sol";
 import {utils} from "src/libs/Utils.sol";
 
 /// @title 1155LiquidSplit
@@ -129,7 +128,7 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
     }
 
     function name() external view returns (string memory) {
-        return string.concat("Liquid Split ", utils.shortAddressToString(address(this)));
+        return string.concat("Permet Contributor Split ", utils.shortAddressToString(address(this)));
     }
 
     function uri(uint256) public view override returns (string memory) {
@@ -138,18 +137,15 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
             Base64.encode(
                 bytes(
                     string.concat(
-                        '{"name": "Liquid Split ',
+                        '{"name": "Permet Contributor Split ',
                         utils.shortAddressToString(address(this)),
                         '", "description": ',
-                        '"Each token represents 0.1% of this Liquid Split.", ',
+                        '"Each token represents 0.1% of this split.", ',
                         '"external_url": ',
-                        '"https://app.0xsplits.xyz/accounts/',
+                        '"https://factory.permet.co/garment-split/',
                         utils.addressToString(address(this)),
-                        "/?chainId=",
-                        utils.uint2str(block.chainid),
                         '", ',
-                        '"image": "data:image/svg+xml;base64,',
-                        Base64.encode(bytes(Renderer.render(address(this)))),
+                        '"image": "https://images.mirror-media.xyz/nftembedsmedia/aHR0cHM6Ly9hMmJmNWIwNDA5MGZmMDA0ZjcwZjc4MGJmYzM5ZjIzOS5pcGZzY2RuLmlvL2lwZnMvYmFma3JlaWFlZjdncHpoNWdnbTM0bWpjcHd2cHF0d3F3cTd6cjZqYXlnejJ1bGh2bm0zN3psdnR6bWk=?mimetype=image/svg+xml", ',
                         '"}'
                     )
                 )
