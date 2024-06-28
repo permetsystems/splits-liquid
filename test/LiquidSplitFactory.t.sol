@@ -67,7 +67,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts_,
             initAllocations: initAllocations_,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -77,7 +78,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts_,
             initAllocations: initAllocations_,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -87,7 +89,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts_,
             initAllocations: initAllocations_,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -97,7 +100,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts_,
             initAllocations: initAllocations_,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -110,7 +114,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: MAX_DISTRIBUTOR_FEE,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -122,7 +127,8 @@ contract LiquidSplitFactoryTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: MAX_DISTRIBUTOR_FEE + 1,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 

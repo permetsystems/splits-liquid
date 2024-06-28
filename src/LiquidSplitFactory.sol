@@ -62,7 +62,8 @@ contract LiquidSplitFactory {
         address[] calldata accounts,
         uint32[] calldata initAllocations,
         uint32 _distributorFee,
-        address owner
+        address owner,
+        string calldata imageUrl
     ) external returns (LS1155CloneImpl ls) {
         /// checks
 
@@ -78,6 +79,6 @@ contract LiquidSplitFactory {
 
         ls = LS1155CloneImpl(ls1155CloneImpl.clone(abi.encodePacked(_distributorFee, block.timestamp)));
         emit CreateLS1155Clone(ls);
-        ls.initializer({accounts: accounts, initAllocations: initAllocations, _owner: owner});
+        ls.initializer({accounts: accounts, initAllocations: initAllocations, _owner: owner, _imageUrl: imageUrl});
     }
 }

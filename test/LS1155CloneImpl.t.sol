@@ -63,7 +63,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -82,7 +83,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         assertEq(address(0), ls.owner());
@@ -96,13 +98,14 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
     function testCannot_beInitializedByNonFactoryAddress() public {
         vm.expectRevert(Unauthorized.selector);
-        ls.initializer({accounts: accounts, initAllocations: initAllocations, _owner: owner});
+        ls.initializer({accounts: accounts, initAllocations: initAllocations, _owner: owner, _imageUrl: "https://example.com/image.png"});
     }
 
     function testCan_allocateToSafe721Recipient() public {
@@ -113,7 +116,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -126,7 +130,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         accounts[0] = account;
@@ -137,7 +142,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -150,7 +156,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         accounts[0] = account;
@@ -161,7 +168,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -174,7 +182,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         accounts[0] = account;
@@ -185,7 +194,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -198,7 +208,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         accounts[0] = account;
@@ -209,7 +220,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
     }
 
@@ -346,7 +358,8 @@ contract LS1155CloneImplTest is Test {
             accounts: _accounts,
             initAllocations: _initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         address(ls).safeTransferETH(TOTAL_SUPPLY * 1 ether);
@@ -373,7 +386,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         address[] memory _accounts = accounts;
@@ -402,7 +416,8 @@ contract LS1155CloneImplTest is Test {
             accounts: accounts,
             initAllocations: initAllocations,
             _distributorFee: distributorFee,
-            owner: owner
+            owner: owner,
+            imageUrl: "https://example.com/image.png"
         });
 
         skip(tsSkip);

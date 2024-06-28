@@ -54,6 +54,8 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
     // 4; second item
     uint256 internal constant MINTED_ON_TIMESTAMP_OFFSET = 4;
 
+    string public imageUrl;
+
     /// @dev equivalent to uint256 public immutable mintedOnTimestamp;
     function mintedOnTimestamp() public pure returns (uint256) {
         return _getArgUint256(MINTED_ON_TIMESTAMP_OFFSET);
@@ -67,7 +69,7 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
     constructor(address _splitMain) Owned(address(0)) LiquidSplitCloneImpl(_splitMain) {}
 
     /// initializes each clone
-    function initializer(address[] calldata accounts, uint32[] calldata initAllocations, address _owner) external {
+    function initializer(address[] calldata accounts, uint32[] calldata initAllocations, address _owner, string calldata _imageUrl) external {
         /// checks
 
         // only liquidSplitFactory may call `initializer`
@@ -90,7 +92,8 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
 
         owner = _owner;
         emit OwnershipTransferred(address(0), _owner);
-
+        
+        imageUrl = _imageUrl;
         LiquidSplitCloneImpl.initializer();
 
         /// interactions
@@ -131,6 +134,10 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
         return string.concat("Permet Contributor Split ", utils.shortAddressToString(address(this)));
     }
 
+    function updateImageUrl(string calldata _imageUrl) external onlyOwner {
+        imageUrl = _imageUrl;
+    }
+
     function uri(uint256) public view override returns (string memory) {
         return string.concat(
             "data:application/json;base64,",
@@ -145,7 +152,10 @@ contract LS1155CloneImpl is Owned, LiquidSplitCloneImpl, ERC1155 {
                         '"https://factory.permet.co/garment-split/',
                         utils.addressToString(address(this)),
                         '", ',
-                        '"image": "https://images.mirror-media.xyz/nftembedsmedia/aHR0cHM6Ly9hMmJmNWIwNDA5MGZmMDA0ZjcwZjc4MGJmYzM5ZjIzOS5pcGZzY2RuLmlvL2lwZnMvYmFma3JlaWFlZjdncHpoNWdnbTM0bWpjcHd2cHF0d3F3cTd6cjZqYXlnejJ1bGh2bm0zN3psdnR6bWk=?mimetype=image/svg+xml", ',
+                        '"image":',
+                        '"',
+                        imageUrl,
+                        '", ',
                         '"}'
                     )
                 )
